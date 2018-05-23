@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fizykochemia</title>
+    <script defer src="/static/fontawesome/fontawesome-all.js"></script>
+    <link rel="stylesheet" href="/node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="demo">
+
+
+        <section class="section">
+            <div class="container">
+                <h1 class="title">
+                    <a href="https://kamilluc.github.io/fizykochemia/">Fizykochemia</a>
+                </h1>
+                <p class="subtitle">
+                    Kalkulator Entalpii
+                </p>
+            </div>
+        </section>
+
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Dane</label>
+            </div>
+            <div class="field-body">
+                <!-- <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                        <input class="input" type="text" placeholder="Name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </p>
+                </div> -->
+                <!-- <div class="field">
+                    <p class="control is-expanded has-icons-left has-icons-right">
+                        <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </p>
+                </div> -->
+                <div class="file is-info">
+                        <label class="file-label">
+                          <input class="file-input" type="file" name="resume">
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              Wczytaj plik z danymi...
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+            </div>
+        </div>
+
+        <!-- <div class="field is-horizontal">
+            <div class="field-label"></div>
+            <div class="field-body">
+                <div class="field is-expanded">
+                    <div class="field has-addons">
+                        <p class="control">
+                            <a class="button is-static">
+                                +44
+                            </a>
+                        </p>
+                        <p class="control is-expanded">
+                            <input class="input" type="tel" placeholder="Your phone number">
+                        </p>
+                    </div>
+                    <p class="help">Do not enter the first zero</p>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- <div class="field is-horizontal">
+                <div class="control">
+                        <label class="checkbox">
+                                <input type="checkbox">
+                                Uwzględnij
+                              </label>
+                              <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                              <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                              <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                </div>
+            </div> -->
+
+<!-- 
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Funkcja rozkładu ciepła podczas przemiany</label>
+            </div>
+
+
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <div class="select is-fullwidth is-info">
+                            <select>
+                                <option>Triangle</option>
+                                <option>Gauss</option>
+                                <option>Median</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth is-info">
+                                <select>
+                                    <option>Triangle</option>
+                                    <option>Gauss</option>
+                                    <option>Median</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div> -->
+         
+        <!-- <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Funkcja rozkładu ciepła podczas przemiany</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <div class="select is-fullwidth is-info">
+                            <select>
+                                <option>Triangle</option>
+                                <option>Gauss</option>
+                                <option>Median</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Przemiany</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="member"> Yes
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="member"> No
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+              <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Przemiany i funkcja rozkładu ciepła</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-horizontal">
+                    <div class="control">
+                            <label class="checkbox">
+                                    <input type="checkbox">
+                                    Uwzględnij
+                                  </label>
+                                  <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                                  <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                                  <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                                  <div class="select is-fullwidth is-info">
+                                        <select>
+                                            <option>Triangle</option>
+                                            <option>Gauss</option>
+                                            <option>Median</option>
+                                        </select>
+                                    </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                        <div class="control">
+                                <label class="checkbox">
+                                        <input type="checkbox">
+                                        Uwzględnij
+                                      </label>
+                                      <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                                      <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                                      <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                                      <div class="select is-fullwidth is-info">
+                                            <select>
+                                                <option>Triangle</option>
+                                                <option>Gauss</option>
+                                                <option>Median</option>
+                                            </select>
+                                        </div>
+
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                            <div class="control">
+                                    <label class="checkbox">
+                                            <input type="checkbox">
+                                            Uwzględnij
+                                          </label>
+                                          <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                                  <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                                  <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                                  <div class="select is-fullwidth is-info">
+                                        <select>
+                                            <option>Triangle</option>
+                                            <option>Gauss</option>
+                                            <option>Median</option>
+                                        </select>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                                <div class="control">
+                                        <label class="checkbox">
+                                                <input type="checkbox">
+                                                Uwzględnij
+                                              </label>
+                                              <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                                              <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                                              <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                                              <div class="select is-fullwidth is-info">
+                                                    <select>
+                                                        <option>Triangle</option>
+                                                        <option>Gauss</option>
+                                                        <option>Median</option>
+                                                    </select>
+                                                </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+
+        <!-- <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Subject</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-danger" type="text" placeholder="e.g. Partnership opportunity">
+                    </div>
+                    <p class="help is-danger">
+                        This field is required
+                    </p>
+                </div>
+            </div>
+        </div> -->
+<!-- 
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Question</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <!-- Left empty for spacing -->
+            </div>
+
+
+<div class="field is-horizontal">
+        <!-- <div class="file is-info">
+          <label class="file-label">
+            <input class="file-input" type="file" name="resume">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Wczytaj plik z danymi...
+              </span>
+            </span>
+          </label>
+        </div> -->
+      </div>
+            <div class="field is-horizontal">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary is-medium is-rounded is-outlined">
+                                <span class="file-icon"><i class="fas fa-chevron-circle-right"></i></span>Oblicz
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <section class="section">
+            <div class="container output2">
+                <h1 class="title">Wyniki</h1>
+
+
+                <figure class="image" style="width: 700px;height:470px">
+                    <img src="/static/img/zelaz-wegiel.png">
+                </figure>
+
+
+
+                <table class="table is-hoverable">
+                    <thead>
+                        <tr>
+                            <td>
+                                <span class="icon">
+                                    <i class="fas fa-thermometer-empty"></i>
+                                </span>
+                                </i>Temperatura [°C]</td>
+                            <td>
+                                <span class="icon">
+                                    <i class="fas fa-hospital-symbol"></i>
+                                </span>Entalpia [kJ/mol]</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td>10</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>
+                        <i class="fas fa-users"></i> Autorzy:</strong> Maria Krauz, Kamil Łuc, Marek Marzec, Michał Pożarlik
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
