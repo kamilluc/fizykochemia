@@ -8,7 +8,55 @@
     <title>Fizykochemia</title>
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <link rel="stylesheet" href="/static/style.css">
+    <!-- <link rel="stylesheet" href="/static/style.css"> -->
+    <style>
+        html {
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            position: relative;
+            margin: 0;
+            padding-bottom: 6rem;
+            min-height: 100%;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background: rgb(36, 36, 90)
+        }
+
+        .demo {
+            margin: 0 auto;
+            padding-top: 64px;
+            max-width: 1024px;
+            width: 94%;
+        }
+
+        .demo h1 {
+            margin-top: 0;
+        }
+
+        .output2 {}
+
+        /**
+   * Footer Styles
+   */
+
+        .footer {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 1rem;
+            background-color: #efefef;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,7 +74,11 @@
             </div>
         </section>
 
-
+        <section class="section">
+                <div class="container output2">
+                    <h1 class="title">Ustawienia</h1>
+                    </div>
+                    </section>
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">Dane</label>
@@ -52,18 +104,18 @@
                     </p>
                 </div> -->
                 <div class="file is-info">
-                        <label class="file-label">
-                          <input class="file-input" type="file" name="resume">
-                          <span class="file-cta">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="resume">
+                        <span class="file-cta">
                             <span class="file-icon">
-                              <i class="fas fa-upload"></i>
+                                <i class="fas fa-upload"></i>
                             </span>
                             <span class="file-label">
-                              Wczytaj plik z danymi...
+                                Wczytaj plik z danymi...
                             </span>
-                          </span>
-                        </label>
-                      </div>
+                        </span>
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -99,7 +151,7 @@
                 </div>
             </div> -->
 
-<!-- 
+        <!-- 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">Funkcja rozkładu ciepła podczas przemiany</label>
@@ -136,7 +188,7 @@
 
 
         </div> -->
-         
+
         <!-- <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">Funkcja rozkładu ciepła podczas przemiany</label>
@@ -172,84 +224,80 @@
                 </div>
             </div>
         </div> -->
-              <div class="field is-horizontal">
+        <div class="field is-horizontal">
             <div class="field-label">
                 <label class="label">Przemiany i funkcja rozkładu ciepła</label>
             </div>
             <div class="field-body">
                 <div class="field is-horizontal">
                     <div class="control">
-                            <label class="checkbox">
-                                    <input type="checkbox">
-                                    Uwzględnij
-                                  </label>
-                                  <input class="input" type="text" placeholder="Temp. początkowa [°C]">
-                                  <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                                  <input class="input" type="text" placeholder="Ciepło przemiany [J]">
-                                  <div class="select is-fullwidth is-info">
-                                        <select>
-                                            <option>Triangle</option>
-                                            <option>Gauss</option>
-                                            <option>Median</option>
-                                        </select>
-                                    </div>
+                        <label class="checkbox" disabled>
+                            <input type="checkbox" checked disabled> Solidus <i class="fas fa-angle-right"></i> Likwidus
+                        </label>
+                        <input class="input" type="text" placeholder="Temp. początkowa [°C]" required>
+                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <div class="select is-fullwidth is-info">
+                            <select>
+                                <option>Triangle</option>
+                                <option>Gauss</option>
+                                <option>Median</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="field is-horizontal">
-                        <div class="control">
-                                <label class="checkbox">
-                                        <input type="checkbox">
-                                        Uwzględnij
-                                      </label>
-                                      <input class="input" type="text" placeholder="Temp. początkowa [°C]">
-                                      <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                                      <input class="input" type="text" placeholder="Ciepło przemiany [J]">
-                                      <div class="select is-fullwidth is-info">
-                                            <select>
-                                                <option>Triangle</option>
-                                                <option>Gauss</option>
-                                                <option>Median</option>
-                                            </select>
-                                        </div>
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox"> Uwzględnij
+                        </label>
+                        <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <div class="select is-fullwidth is-info">
+                            <select>
+                                <option>Triangle</option>
+                                <option>Gauss</option>
+                                <option>Median</option>
+                            </select>
+                        </div>
 
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox"> Uwzględnij
+                        </label>
+                        <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <div class="select is-fullwidth is-info">
+                            <select>
+                                <option>Triangle</option>
+                                <option>Gauss</option>
+                                <option>Median</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="field is-horizontal">
-                            <div class="control">
-                                    <label class="checkbox">
-                                            <input type="checkbox">
-                                            Uwzględnij
-                                          </label>
-                                          <input class="input" type="text" placeholder="Temp. początkowa [°C]">
-                                  <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                                  <input class="input" type="text" placeholder="Ciepło przemiany [J]">
-                                  <div class="select is-fullwidth is-info">
-                                        <select>
-                                            <option>Triangle</option>
-                                            <option>Gauss</option>
-                                            <option>Median</option>
-                                        </select>
-                                    </div>
-                            </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox"> Uwzględnij
+                        </label>
+                        <input class="input" type="text" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <div class="select is-fullwidth is-info">
+                            <select>
+                                <option>Triangle</option>
+                                <option>Gauss</option>
+                                <option>Median</option>
+                            </select>
                         </div>
-                        <div class="field is-horizontal">
-                                <div class="control">
-                                        <label class="checkbox">
-                                                <input type="checkbox">
-                                                Uwzględnij
-                                              </label>
-                                              <input class="input" type="text" placeholder="Temp. początkowa [°C]">
-                                              <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                                              <input class="input" type="text" placeholder="Ciepło przemiany [J]">
-                                              <div class="select is-fullwidth is-info">
-                                                    <select>
-                                                        <option>Triangle</option>
-                                                        <option>Gauss</option>
-                                                        <option>Median</option>
-                                                    </select>
-                                                </div>
-                                </div>
-                            </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -268,7 +316,7 @@
                 </div>
             </div>
         </div> -->
-<!-- 
+        <!-- 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">Question</label>
@@ -288,8 +336,8 @@
             </div>
 
 
-<div class="field is-horizontal">
-        <!-- <div class="file is-info">
+            <div class="field is-horizontal">
+                <!-- <div class="file is-info">
           <label class="file-label">
             <input class="file-input" type="file" name="resume">
             <span class="file-cta">
@@ -302,12 +350,14 @@
             </span>
           </label>
         </div> -->
-      </div>
+            </div>
             <div class="field is-horizontal">
                 <div class="field">
                     <div class="control">
                         <button class="button is-primary is-medium is-rounded is-outlined">
-                                <span class="file-icon"><i class="fas fa-chevron-circle-right"></i></span>Oblicz
+                            <span class="file-icon">
+                                <i class="fas fa-chevron-circle-right"></i>
+                            </span>Oblicz
                         </button>
                     </div>
                 </div>
@@ -323,11 +373,12 @@
 
 
                 <figure class="image" style="width: 700px;height:470px">
-                    <img src="http://1.bp.blogspot.com/-pkzWbauymU8/VKG50E1jM8I/AAAAAAAADnQ/AH6_66ki0oI/s1600/700px-Fe-C_(pl).png">
+                    <div id="wykres">
+                        <img src="http://1.bp.blogspot.com/-pkzWbauymU8/VKG50E1jM8I/AAAAAAAADnQ/AH6_66ki0oI/s1600/700px-Fe-C_(pl).png">
+                    </div>
                 </figure>
 
-
-
+<br>
                 <table class="table is-hoverable">
                     <thead>
                         <tr>
@@ -362,19 +413,20 @@
 
                     </tbody>
                 </table>
+            
             </div>
-    </section>
+        </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="content has-text-centered">
-                <p>
-                    <strong>
-                        <i class="fas fa-users"></i> Autorzy:</strong> Maria Krauz, Kamil Łuc, Marek Marzec, Michał Pożarlik
-                </p>
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        <strong>
+                            <i class="fas fa-users"></i> Autorzy:</strong> Maria Krauz, Kamil Łuc, Marek Marzec, Michał Pożarlik
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 </body>
 
 </html>
