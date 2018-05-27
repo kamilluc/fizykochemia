@@ -12,7 +12,7 @@ Po załadowaniu strony, wybraniu pliku z danymi i wypełnieniu przemian możecie
 Na wejściu dostajecie 2 obiekty przez `getInputData` i `getInputSettings`, kolejno string z zawartością pliku `Specific_Heat.txt` i wszystkie parametru procesu które wybrał użytkownik w UI, przykład w `input.json`
 
 Zwracacie JSON z 2 tablicami, temp i entalpia
-
+Zastosujcie się do standardu: [README MAREK](https://github.com/kamilluc/fizykochemia/tree/marek)
 Możecie też zwrócić funkcje z rozkładem ciepła podczas przemiany (do dogadania)
 
 ## ❌Wyniki
