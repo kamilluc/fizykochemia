@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+        window.onload = function() {
+
+            let dataPoints = [];
+
+            let options = {
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Entalpia"
+                },
+                axisX: {
+                    title:"Temperatura",
+                    valueFormatString: "#######################",
+
+                },
+                axisY: {
+                    title: "Entalpia",
+                    titleFontSize: 24,
+                    includeZero: false
+                },
+                data: [{
+                    type: "spline",
+                    dataPoints: dataPoints,
+                    xValueType: "number",
+                }]
+            };
+
+            function addData(data) {
+                for (let i = 0; i < data.length; i++) {
+                    dataPoints.push({
+                        x: data[i].temp,
+                        y: data[i].Cp
+                    });
+                }
+                $("#chartContainer").CanvasJSChart(options);
+
+            }
+
+            $.getJSON("https://api.myjson.com/bins/jv2im", addData);
+        }
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>
