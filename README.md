@@ -1,6 +1,7 @@
 # [Fizykochemia WWW](https://kamilluc.github.io/fizykochemia/) 
 
-## 🙀Powinien was interesować tylko plik `/scripts/input.js` 
+## 🙀Powinien was interesować tylko plik `/static/scripts/input.js` 
+`/index.html` to główny plik, `/docs/index.html` to zmodyfikowana kopia do GitHub Pages
 
 ## ✔️Widok
 Po załadowaniu strony, wybraniu pliku z danymi i wypełnieniu przemian możecie odpalić 2 metody:
