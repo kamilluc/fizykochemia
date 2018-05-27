@@ -1,139 +1,20 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fizykochemia</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <!-- <link rel="stylesheet" href="/static/style.css"> -->
-    <style>
-        html {
-            height: 100%;
-            box-sizing: border-box;
-        }
-
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit;
-        }
-
-        body {
-            position: relative;
-            margin: 0;
-            padding-bottom: 6rem;
-            min-height: 100%;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            
-        }
-
-        .demo {
-            margin: 0 auto;
-            padding-top: 64px;
-            max-width: 1024px;
-            width: 94%;
-        }
-
-        .demo h1 {
-            margin-top: 0;
-        }
-
-        .output2 {
-            /* background:rgba(255, 255, 255, 0.2); */
-        }
-.table{
-            background:rgba(255, 255, 255, 0);
-            
-
-}
-        /**
-   * Footer Styles
-   */
-
-        .footer {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            padding: 1rem;
-            background-color: #efefef;
-            text-align: center;
-        }
-    </style>
-    <!-- particle -->
-    <style>
-/* ---- reset ---- */
-body {
-  margin: 0;
-  font: normal 75% Arial, Helvetica, sans-serif;
-}
-canvas {
-  display: block;
-  vertical-align: bottom;
-} /* ---- particles.js container ---- */
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #dedfbd1e;
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-} /* ---- stats.js ---- */
-.count-particles {
-  background: #000022;
-  position: absolute;
-  top: 48px;
-  left: 0;
-  width: 80px;
-  color: #13e8e9;
-  font-size: 0.8em;
-  text-align: left;
-  text-indent: 4px;
-  line-height: 14px;
-  padding-bottom: 2px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
-.js-count-particles {
-  font-size: 1.1em;
-}
-#stats,
-.count-particles {
-  -webkit-user-select: none;
-  margin-top: 5px;
-  margin-left: 5px;
-}
-#stats {
-  border-radius: 3px 3px 0 0;
-  overflow: hidden;
-  
-}
-.count-particles {
-  border-radius: 0 0 3px 3px;
-}
-
-</style>
+    <link rel="stylesheet" href="/static/style/style2.css">
+    <link rel="stylesheet" href="/static/style/style3.css">
 </head>
-
 <body>
-<!-- particles.js container -->
-<div id="particles-js"></div>
-<!-- stats - count particles -->
-<!-- <div class="count-particles"> <span class="js-count-particles">--</span> particles </div> -->
-<!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-<!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> -->
-<!-- stats.js lib -->
-<!-- <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
+    <div id="particles-js"></div>
 
     <div class="demo">
-
-
         <section class="section">
             <div class="container">
                 <h1 class="title" style="font-size: 2.5rem">
@@ -146,34 +27,15 @@ canvas {
         </section>
 
         <section class="section">
-                <div class="container output2">
-                    <h1 class="title">Ustawienia</h1>
-                    </div>
-                    </section>
+            <div class="container output2">
+                <h1 class="title">Ustawienia</h1>
+            </div>
+        </section>
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">Dane</label>
             </div>
             <div class="field-body">
-                <!-- <div class="field">
-                    <p class="control is-expanded has-icons-left">
-                        <input class="input" type="text" placeholder="Name">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                    </p>
-                </div> -->
-                <!-- <div class="field">
-                    <p class="control is-expanded has-icons-left has-icons-right">
-                        <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
-                    </p>
-                </div> -->
                 <div class="file is-info">
                     <label class="file-label">
                         <input class="file-input" type="file" name="resume" id="file-input">
@@ -190,111 +52,7 @@ canvas {
             </div>
         </div>
 
-        <!-- <div class="field is-horizontal">
-            <div class="field-label"></div>
-            <div class="field-body">
-                <div class="field is-expanded">
-                    <div class="field has-addons">
-                        <p class="control">
-                            <a class="button is-static">
-                                +44
-                            </a>
-                        </p>
-                        <p class="control is-expanded">
-                            <input class="input" type="tel" placeholder="Your phone number">
-                        </p>
-                    </div>
-                    <p class="help">Do not enter the first zero</p>
-                </div>
-            </div>
-        </div> -->
 
-
-        <!-- <div class="field is-horizontal">
-                <div class="control">
-                        <label class="checkbox">
-                                <input type="checkbox">
-                                Uwzględnij
-                              </label>
-                              <input class="input" type="text" placeholder="Temp. początkowa [°C]">
-                              <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                              <input class="input" type="text" placeholder="Ciepło przemiany [J]">
-                </div>
-            </div> -->
-
-        <!-- 
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Funkcja rozkładu ciepła podczas przemiany</label>
-            </div>
-
-
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <div class="control">
-                        <div class="select is-fullwidth is-info">
-                            <select>
-                                <option>Triangle</option>
-                                <option>Gauss</option>
-                                <option>Median</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field-body">
-                    <div class="field is-narrow">
-                        <div class="control">
-                            <div class="select is-fullwidth is-info">
-                                <select>
-                                    <option>Triangle</option>
-                                    <option>Gauss</option>
-                                    <option>Median</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-        </div> -->
-
-        <!-- <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Funkcja rozkładu ciepła podczas przemiany</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <div class="control">
-                        <div class="select is-fullwidth is-info">
-                            <select>
-                                <option>Triangle</option>
-                                <option>Gauss</option>
-                                <option>Median</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="field is-horizontal">
-            <div class="field-label">
-                <label class="label">Przemiany</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <div class="control">
-                        <label class="radio">
-                            <input type="radio" name="member"> Yes
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="member"> No
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="field is-horizontal">
             <div class="field-label">
                 <label class="label">Przemiany i funkcja rozkładu ciepła</label>
@@ -303,7 +61,8 @@ canvas {
                 <div class="field is-horizontal">
                     <div class="control">
                         <label class="checkbox" disabled class="cb">
-                            <input type="checkbox" checked disabled> Solidus <i class="fas fa-angle-right"></i> Likwidus
+                            <input type="checkbox" checked disabled> Solidus
+                            <i class="fas fa-angle-right"></i> Likwidus
                         </label>
                         <input class="input tp" type="text" placeholder="Temp. początkowa [°C]" required>
                         <input class="input" type="text" placeholder="Temp. końcowa [°C]">
@@ -332,7 +91,6 @@ canvas {
                                 <option>Median</option>
                             </select>
                         </div>
-
                     </div>
                 </div>
                 <div class="field is-horizontal">
@@ -372,55 +130,12 @@ canvas {
             </div>
         </div>
 
-        <!-- <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Subject</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-danger" type="text" placeholder="e.g. Partnership opportunity">
-                    </div>
-                    <p class="help is-danger">
-                        This field is required
-                    </p>
-                </div>
-            </div>
-        </div> -->
-        <!-- 
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Question</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
 
         <div class="field is-horizontal">
             <div class="field-label">
-                <!-- Left empty for spacing -->
             </div>
-
-
             <div class="field is-horizontal">
-                <!-- <div class="file is-info">
-          <label class="file-label">
-            <input class="file-input" type="file" name="resume">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
-              </span>
-              <span class="file-label">
-                Wczytaj plik z danymi...
-              </span>
-            </span>
-          </label>
-        </div> -->
             </div>
             <div class="field is-horizontal">
                 <div class="field">
@@ -433,10 +148,7 @@ canvas {
                     </div>
                 </div>
             </div>
-
         </div>
-
-
 
         <section class="section">
             <div class="container output2">
@@ -449,7 +161,8 @@ canvas {
                     </div>
                 </figure>
 
-<br>
+                <br>
+
                 <table class="table is-hoverable">
                     <thead>
                         <tr>
@@ -484,7 +197,7 @@ canvas {
 
                     </tbody>
                 </table>
-            
+
             </div>
         </section>
 
@@ -498,183 +211,10 @@ canvas {
                 </div>
             </div>
         </footer>
+
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="/static/scripts/particles.js"></script>
+        <script src="/static/scripts/input.js"></script>
 
-<!-- particle -->
-<script>
-
-
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 60, density: { enable: true, value_area: 800 } },
-    color: { value: "#394a9d" },
-    shape: {
-      type: "circle",
-      stroke: { width: 0, color: "#000000" },
-      polygon: { nb_sides: 5 },
-      image: { src: "img/github.svg", width: 100, height: 100 }
-    },
-    opacity: {
-      value: 0.3,
-      random: true,
-      anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
-    },
-    size: {
-      value: 3,
-      random: true,
-      anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
-    },
-    line_linked: {
-      enable: false,
-      distance: 150,
-      color: "#264bc3",
-      opacity: 0.4,
-      width: 1
-    },
-    move: {
-      enable: true,
-      speed: 6,
-      direction: "none",
-      random: false,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-      attract: { enable: false, rotateX: 600, rotateY: 1200 }
-    }
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: { enable: true, mode: "repulse" },
-      onclick: { enable: true, mode: "push" },
-      resize: true
-    },
-    modes: {
-      grab: { distance: 400, line_linked: { opacity: 1 } },
-      bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-      repulse: { distance: 200, duration: 0.4 },
-      push: { particles_nb: 4 },
-      remove: { particles_nb: 2 }
-    }
-  },
-  retina_detect: true
-  
-});
-var count_particles, stats, update;
-// stats = new Stats();
-// stats.setMode(-1);
-// stats.domElement.style.position = "absolute";
-// stats.domElement.style.left = "0px";
-// stats.domElement.style.top = "0px";
-// document.body.appendChild(stats.domElement);
-//count_particles = document.querySelector(".js-count-particles");
-update = function() {
-//   stats.begin();
-//   stats.end();
-  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-   // count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-  }
-  requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
-          
-</script>
-<!-- <script src="/static/scripts/input.js"></script> -->
-<!--     <script src="https://raw.githubusercontent.com/kamilluc/fizykochemia/master/static/scripts/input.js?token=AV8MHCTghM2qxuKldBL0H4ixBBgvUbSAks5bEa5qwA%3D%3D"></script> -->
-<script>
-    // console.log("test");
-let p1,p2,p3,p4
-let data, settings;
-
-function getInputData(){return data}
-function getInputSettings(){
-    phases();
-    settings=[p1, p2,p3,p4];
-    return settings}
-
-window.onload = function() {
-
-    var fileInput = document.getElementById('file-input');
-    // var fileDisplayArea = document.getElementById('fileDisplayArea');
-
-    fileInput.addEventListener("change", function(e) {
-        var file = fileInput.files[0];
-        var textType = /text.*/;
-
-        if (file.type.match(textType)) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                // fileDisplayArea.innerText = reader.result;
-                // console.log(reader.result);
-                data=reader.result;
-            }
-
-            // reader.readAsText(file);
-            reader.readAsBinaryString(file) 
-        } else {
-            // fileDisplayArea.innerText = "File not supported!";
-        }
-    });}
-
-    btn=document.querySelector(".button");
-btn.addEventListener("click",()=>{console.log("Tu wstawić funkcję liczącą")});
-
-
-
-// {
-//     "active": true,
-//     "function": "gauss",
-//     "t_start": 10,
-//     "t_stop": 20,
-//     "q": 500
-//   },
-
-
-function phases(){
-    let cb=document.querySelectorAll(".cb");
-    let cb1=true;
-    let cb2=cb[0].checked;
-    let cb3=cb[1].checked;
-    let cb4=cb[1].checked;
-
-    // let cb=document.querySelectorAll(".cb");
-    let methods=document.querySelectorAll("select");
-
-
-    let inputs=document.querySelectorAll(".input");
-
-p1={
-    "active": cb1,
-    "function": methods[0].value,
-    "t_start": parseInt(inputs[0].value),
-    "t_stop": parseInt(inputs[1].value),
-    "q": parseInt(inputs[2].value),
-}
-p2={
-    "active": cb2,
-    "function": methods[1].value,
-    "t_start": parseInt(inputs[3].value),
-    "t_stop": parseInt(inputs[4].value),
-    "q": parseInt(inputs[5].value),
-}
-p3={
-    "active": cb3,
-    "function": methods[2].value,
-    "t_start": parseInt(inputs[6].value),
-    "t_stop": parseInt(inputs[7].value),
-    "q": parseInt(inputs[8].value),
-}
-p4={
-    "active": cb4,
-    "function": methods[3].value,
-    "t_start": parseInt(inputs[9].value),
-    "t_stop": parseInt(inputs[10].value),
-    "q": parseInt(inputs[11].value),
-}
-// console.log(p1);
-}
-    </script>
-    </body>
-
+</body>
 </html>
