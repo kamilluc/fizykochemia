@@ -123,7 +123,12 @@ function addPhaseTransitionEnthalpyToHeatAray(heatArray, phaseTransitionConfig)
 
 		}
 		else
-			heatArray[i].h = 0;
+		{
+			if(typeof(heatArray[i].h) == 'undefined')
+			{
+				heatArray[i].h = 0;
+			}
+		}
 	}
 }	
 
@@ -177,5 +182,4 @@ function calculateEvent()
 	return prepareOutput(heatArray);
 
 }
-
 
