@@ -9,13 +9,17 @@ function loadHeat(data)
 
 	var dataArray = data.split('\n');
 	var result = [];
-	for(var i=5; i<dataArray.length; i++)
+	for(var i=5; i<dataArray.length-1; i++)
 	{
 		var temp = {};
 		temp.t = parseFloat(dataArray[i].split(' ')[0]);
 		temp.cp = parseFloat(dataArray[i].split(' ')[1]);
 		result.push(temp);
 	}
+	
+	// uzupelnienie danych o t i cp co 1 stopien
+	// interpolacja cp
+	
 	return result;
 
 }
@@ -55,11 +59,15 @@ function applyPhaseTransitions(heatArray, phaseTransitions)
 					stop_index = j;
 			}
 			if(!containsT_start)
-				heatArray.push({t: phaseTransitions[i].t_start, 
-								cp: (heatArray[start_index].cp + heatArray[start_index+1].cp})/2);				
+			{
+				var objToPush = {};
+				objToPush.t=phaseTransitions[i].t_start;
+				objToPush.cp =(heatArray[start_index].cp + heatArray[start_index+1].cp)/2;
+				heatArray.push(objToPush);				
+			}
 			if(!containsT_stop)
 				heatArray.push({t: phaseTransitions[i].t_stop, 
-								cp: (heatArray[stop_index].cp + heatArray[stop_index+1].cp})/2);			
+								cp: (heatArray[stop_index].cp + heatArray[stop_index+1].cp)/2});			
 			if(!containsT_start || !containsT_stop)
 			{
 				heatArray.sort(sortBy_t);
@@ -105,16 +113,17 @@ function addPhaseTransitionEnthalpyToHeatAray(heatArray, phaseTransitionConfig)
 		b = 10;
 	}
 
+	var ref_diff = b - a;
+	var act_diff = phaseTransitionConfig.t_stop - phaseTransitionConfig.t_start;
+
 	var P_ref = integration(calculateFunction, a, b);
 	for(var i=0; i<heatArray.length; i++)
 	{
 		if(heatArray[i].t > phaseTransitionConfig.t_start && 
 				heatArray[i].t <= phaseTransitionConfig.t_stop)
 		{
-			var ref_diff = b - a;
-			var act_diff = phaseTransitionConfig.t_stop - phaseTransitionConfig.t_start;
-			var t_ref_1 = heatArray[i-1].t * ref_diff / act_diff;
-			var t_ref_2 = heatArray[i].t * ref_diff / act_diff;
+			var t_ref_1 = (heatArray[i-1].t -phaseTransitionConfig.t_start) / act_diff * ref_diff +a;
+			var t_ref_2 = (heatArray[i].t-phaseTransitionConfig.t_start) / act_diff * ref_diff +a;
 
 			var P_act = ((calculateFunction(t_ref_1) + calculateFunction(t_ref_2)) / 2) 
 										* (t_ref_2 - t_ref_1);
@@ -132,13 +141,14 @@ function addPhaseTransitionEnthalpyToHeatAray(heatArray, phaseTransitionConfig)
 	}
 }	
 
-
+// TODO ------------------------------------------
 function calculateEnthalpy(heatArray)
 {
-	var h0 = heatArray[0].t * heatArray[0].cp;
+	var h0 = heatArray[0].h + (heatArray[0].t * heatArray[0].cp);
 	heatArray[0].h = h0;
 	for(var i=1; i< heatArray.length; i++)
 	{
+	
 		var hi = h0 + (heatArray[i].cp * (heatArray[i-1].t + heatArray[i].t)/2);
 		heatArray[i].h += hi;
 		h0 = heatArray[i].h;
