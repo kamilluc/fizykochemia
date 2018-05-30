@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fizykochemia</title>
+    <script src="https://unpkg.com/tippy.js@2.5.2/dist/tippy.all.min.js"></script>
+    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="static/style/style2.css">
     <link rel="stylesheet" href="static/style/style3.css">
+
+
+
 </head>
 <body>
     <div id="particles-js"></div>
@@ -64,9 +70,9 @@
                             <input type="checkbox" checked disabled> Solidus
                             <i class="fas fa-angle-right"></i> Likwidus
                         </label>
-                        <input class="input tp"  value="1495" type="text" placeholder="Temp. początkowa [°C]" required>
-                        <input class="input"  value="1520" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input"  value="150" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp"  value="1495" type="number" placeholder="Temp. początkowa [°C]" required>
+                        <input class="input"  value="1520" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input"  value="150" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -81,9 +87,9 @@
                         <label class="checkbox">
                             <input type="checkbox" class="cb"> Uwzględnij
                         </label>
-                        <input class="input tp" type="text" placeholder="Temp. początkowa [°C]">
-                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -98,9 +104,9 @@
                         <label class="checkbox">
                             <input type="checkbox" class="cb"> Uwzględnij
                         </label>
-                        <input class="input tp" type="text" placeholder="Temp. początkowa [°C]">
-                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -115,9 +121,9 @@
                         <label class="checkbox">
                             <input type="checkbox" class="cb"> Uwzględnij
                         </label>
-                        <input class="input tp" type="text" placeholder="Temp. początkowa [°C]">
-                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -149,6 +155,25 @@
                 </div>
             </div>
         </div>
+
+        <div id="bulma_modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card"  style="max-width: 400px">
+              <header class="modal-card-head">
+                <p class="modal-card-title">Nieprawidłowe dane:</p>
+                <!-- <button class="delete" aria-label="close"></button> -->
+              </header>
+              <section class="modal-card-body">
+                  <img src="https://www.spreadshirt.pl/image-server/v1/mp/designs/142055554,width=178,height=178/sad-panda.png"/><p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita tempora animi voluptatibus omnis assumenda doloribus! Nemo repudiandae rem aut odit optio corrupti assumenda ipsam nesciunt voluptates. Officia aut rerum nisi.
+            </p>              </section>
+              <footer class="modal-card-foot">
+                <button id="modal_button" class="button is-success">Zamknij</button>
+                <!-- <button class="button">Cancel</button> -->
+              </footer>
+            </div>
+          </div> -->
+
 
         <section class="section">
             <div class="container output2">
@@ -216,6 +241,15 @@
         <script src="static/scripts/particles.js"></script>
         <script src="static/scripts/input.js"></script>
         <script src="static/scripts/calculations.js"></script>
-
+        <script>
+            tippy('selector', {
+                //html: '#myTemplate',
+                // ...or...
+                html: document.querySelector('#myTemplate'),
+                // ...or you can clone a direct element too...
+                //html: document.querySelector('#myTemplate').cloneNode(true)
+              })
+        
+            </script>
 </body>
 </html>

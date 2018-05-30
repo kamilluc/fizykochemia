@@ -34,7 +34,37 @@ window.onload = function() {
     });}
 
     btn=document.querySelector(".button");
-btn.addEventListener("click",()=>{console.log("Tu wstawić funkcję liczącą")});
+// btn.addEventListener("click",()=>{console.log("Tu wstawić funkcję liczącą")});
+btn.addEventListener("click",()=>{
+   validate();
+  
+});
+const modal=document.getElementById("bulma_modal");
+
+const modal_button=document.getElementById("modal_button");
+modal_button.addEventListener("click", ()=>{modal.classList.remove("is-active")})
+
+
+function validate(){
+let error="";
+  s_arr=getInputSettings();
+  for(let i=0;i<s_arr.length;i++){
+    if(s_arr[i].t_start>s_arr[i].t_stop)
+        error+="Nieprawidłowe temperatury dla "+(i+1)+" przemiany! ";
+  }
+
+  if(error!==""){
+      const modal_text=document.querySelector(".modal-card-body p");
+      modal_text.innerText=error;
+
+    modal.classList.add("is-active");
+    
+  }
+  else
+    calculateEvent();
+
+}
+// alertify.alert("Message");
 
 
 
