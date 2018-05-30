@@ -25,3 +25,4 @@ Wynik wprowadzić do tabeli tbody (wygeneruj w DOM tr/td)
 Wykres wstawić do elementu o id="wykres" (zamiast tymczasowego żelazo-węgiel).
 
 Trzeba by też wygenerować i zwrócić plik z wynikami (File API jak przy wczytywaniu pliku, i do tego jakis button, można skopiować taki jak "Oblicz")
+
