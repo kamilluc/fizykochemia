@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fizykochemia</title>
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <link rel="stylesheet" href="/static/style/style2.css">
-    <link rel="stylesheet" href="/static/style/style3.css">
+    <link rel="stylesheet" href="static/style/style2.css">
+    <link rel="stylesheet" href="static/style/style3.css">
+    <link rel="shortcut icon" type="image/png" href="static/img/logo.png">
 </head>
+
 <body>
     <div id="particles-js"></div>
 
     <div class="demo">
         <section class="section">
             <div class="container">
-                <h1 class="title" style="font-size: 2.5rem">
+                <h1 class="title" id="main_title">
                     <a href="https://kamilluc.github.io/fizykochemia/">Fizykochemia</a>
                 </h1>
                 <p class="subtitle">
@@ -64,9 +68,9 @@
                             <input type="checkbox" checked disabled> Solidus
                             <i class="fas fa-angle-right"></i> Likwidus
                         </label>
-                        <input class="input tp" type="text" placeholder="Temp. początkowa [°C]" required>
-                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp" value="1495" type="number" placeholder="Temp. początkowa [°C]" required>
+                        <input class="input" value="1520" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" value="150" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -81,9 +85,9 @@
                         <label class="checkbox">
                             <input type="checkbox" class="cb"> Uwzględnij
                         </label>
-                        <input class="input tp" type="text" placeholder="Temp. początkowa [°C]">
-                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -98,9 +102,9 @@
                         <label class="checkbox">
                             <input type="checkbox" class="cb"> Uwzględnij
                         </label>
-                        <input class="input tp" type="text" placeholder="Temp. początkowa [°C]">
-                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -115,9 +119,9 @@
                         <label class="checkbox">
                             <input type="checkbox" class="cb"> Uwzględnij
                         </label>
-                        <input class="input tp" type="text" placeholder="Temp. początkowa [°C]">
-                        <input class="input" type="text" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="text" placeholder="Ciepło przemiany [J]">
+                        <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
+                        <input class="input" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
                         <div class="select is-fullwidth is-info">
                             <select>
                                 <option>Triangle</option>
@@ -150,12 +154,35 @@
             </div>
         </div>
 
+        <div id="bulma_modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Nieprawidłowe dane</p>
+                    <!-- <button class="delete" aria-label="close"></button> -->
+                </header>
+                <section class="modal-card-body">
+                    <img src="https://www.spreadshirt.pl/image-server/v1/mp/designs/142055554,width=178,height=178/sad-panda.png" />
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita tempora animi voluptatibus omnis assumenda doloribus!
+                        Nemo repudiandae rem aut odit optio corrupti assumenda ipsam nesciunt voluptates. Officia aut rerum
+                        nisi.
+                    </p>
+                </section>
+                <footer class="modal-card-foot">
+                    <button id="modal_button" class="button is-success">Zamknij</button>
+                    <!-- <button class="button">Cancel</button> -->
+                </footer>
+            </div>
+        </div> -->
+
+
         <section class="section">
             <div class="container output2">
                 <h1 class="title">Wyniki</h1>
 
 
-                <figure class="image" style="width: 700px;height:470px">
+                <figure class="image">
                     <div id="wykres">
                         <img src="https://1.bp.blogspot.com/-pkzWbauymU8/VKG50E1jM8I/AAAAAAAADnQ/AH6_66ki0oI/s1600/700px-Fe-C_(pl).png">
                     </div>
@@ -213,8 +240,9 @@
         </footer>
 
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script src="/static/scripts/particles.js"></script>
-        <script src="/static/scripts/input.js"></script>
-
+        <script src="static/scripts/particles.js"></script>
+        <script src="static/scripts/input.js"></script>
+        <script src="static/scripts/calculations.js"></script>
 </body>
+
 </html>
