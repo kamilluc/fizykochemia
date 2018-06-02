@@ -14,7 +14,7 @@
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "/images/kamilluc/fizykochemia/master/static/img/logo.png",
+            "src": "https://raw.githubusercontent.com/kamilluc/fizykochemia/master/static/img/logo.png",
             "type": "image/png",
             "sizes": "512x512"
         }
