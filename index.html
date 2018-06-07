@@ -13,6 +13,21 @@
     <link rel="stylesheet" href="static/style/style2.css">
     <link rel="stylesheet" href="static/style/style3.css">
     <link rel="shortcut icon" type="image/png" href="static/img/logo.png">
+
+	<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="static/scripts/particles.js"></script>
+        <script src="static/scripts/input.js"></script>
+        <script src="static/scripts/calculations.js"></script>
+        <script src="static/scripts/chart.js"></script>
+
+        <script type="text/javascript" src="static/scripts/pyextjs/ss.js"></script>
+        <script type="text/javascript" src="static/scripts/pyextjs/Numpy.js"></script>
+        <script type="text/javascript" src="static/scripts/pyextjs/PolySolve.js"></script>
+        <script type="text/javascript" src="static/scripts/pyextjs/Scipy.js"></script>
+
 </head>
 
 <body>
@@ -144,7 +159,8 @@
             <div class="field is-horizontal">
                 <div class="field">
                     <div class="control">
-                        <button class="button is-primary is-medium is-rounded is-outlined">
+                        <button class="button is-primary is-medium is-rounded is-outlined"
+				onclick="validate();">
                             <span class="file-icon">
                                 <i class="fas fa-chevron-circle-right"></i>
                             </span>Oblicz
@@ -153,13 +169,12 @@
                 </div>
             </div>
         </div>
-
+<!--
         <div id="bulma_modal" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Nieprawidłowe dane</p>
-                    <!-- <button class="delete" aria-label="close"></button> -->
                 </header>
                 <section class="modal-card-body">
                     <img src="https://www.spreadshirt.pl/image-server/v1/mp/designs/142055554,width=178,height=178/sad-panda.png" />
@@ -171,23 +186,24 @@
                 </section>
                 <footer class="modal-card-foot">
                     <button id="modal_button" class="button is-success">Zamknij</button>
-                    <!-- <button class="button">Cancel</button> -->
                 </footer>
             </div>
-        </div> -->
-
+        </div>
+-->
 
         <section class="section">
             <div class="container output2">
                 <h1 class="title">Wyniki</h1>
 
-
+				<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<!--
                 <figure class="image">
                     <div id="wykres">
                         <img src="https://1.bp.blogspot.com/-pkzWbauymU8/VKG50E1jM8I/AAAAAAAADnQ/AH6_66ki0oI/s1600/700px-Fe-C_(pl).png">
+
                     </div>
                 </figure>
-
+-->
                 <br>
 
                 <table class="table is-hoverable">
@@ -239,10 +255,6 @@
             </div>
         </footer>
 
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script src="static/scripts/particles.js"></script>
-        <script src="static/scripts/input.js"></script>
-        <script src="static/scripts/calculations.js"></script>
 </body>
 
 </html>

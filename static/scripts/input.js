@@ -37,19 +37,20 @@ window.onload = function () {
         }
     });
 }
-
+/*
 btn = document.querySelector(".button");
 btn.addEventListener("click", () => {
     validate();
 
 });
+
 const modal = document.getElementById("bulma_modal");
 
 const modal_button = document.getElementById("modal_button");
 modal_button.addEventListener("click", () => {
     modal.classList.remove("is-active")
 })
-
+*/
 
 function validate() {
     let error = "";
@@ -62,14 +63,14 @@ function validate() {
     }
 
     if (error !== "") {
-        const modal_text = document.querySelector(".modal-card-body p");
-        modal_text.innerText = error;
+        //const modal_text = document.querySelector(".modal-card-body p");
+        //modal_text.innerText = error;
 
-        modal.classList.add("is-active");
-
+        //modal.classList.add("is-active");
+		alert(error);
     } else {
-        calculateEvent();
-        //tu wstawic funkcje marka
+        var result = calculateEvent();
+        printChart(result);
     }
 }
 
