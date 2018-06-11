@@ -1,6 +1,7 @@
 let p1, p2, p3, p4
 let data, settings;
 let file
+let result = null;
 
 function getInputData() {
     return data
@@ -18,6 +19,7 @@ window.onload = function () {
     // var fileDisplayArea = document.getElementById('fileDisplayArea');
 
     fileInput.addEventListener("change", function (e) {
+    		isPrintCpChart = false;
         file = fileInput.files[0];
         var textType = /text.*/;
 
@@ -28,6 +30,7 @@ window.onload = function () {
                 // fileDisplayArea.innerText = reader.result;
                 // console.log(reader.result);
                 data = reader.result;
+                
             }
 
             // reader.readAsText(file);
@@ -36,6 +39,10 @@ window.onload = function () {
             // fileDisplayArea.innerText = "File not supported!";
         }
     });
+    
+    
+    for(var k =1;k<=4;k++)
+    	drawHelpChart(k);
 }
 /*
 btn = document.querySelector(".button");
@@ -51,7 +58,7 @@ modal_button.addEventListener("click", () => {
     modal.classList.remove("is-active")
 })
 */
-
+var isPrintCpChart;
 function validate() {
     let error = "";
     if (file == undefined)
@@ -67,10 +74,15 @@ function validate() {
         //modal_text.innerText = error;
 
         //modal.classList.add("is-active");
-		alert(error);
+			alert(error);
     } else {
-        var result = calculateEvent();
+        result = calculateEvent();
         printChart(result);
+        
+        if(!isPrintCpChart){      
+		      printChartCp(result);
+	        isPrintCpChart = true;
+        }
     }
 }
 
@@ -118,3 +130,6 @@ function phases() {
     }
 
 }
+
+
+

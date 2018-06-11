@@ -85,14 +85,35 @@
                         </label>
                         <input class="input tp" value="1495" type="number" placeholder="Temp. początkowa [°C]" required>
                         <input class="input" value="1520" type="number" placeholder="Temp. końcowa [°C]">
-                        <input class="input" value="150" type="number" placeholder="Ciepło przemiany [J]">
+                        <input class="input" value="150" type="number" placeholder="Ciepło przemiany [J/g]">
                         <div class="select is-fullwidth is-info">
-                            <select>
+                            <select onchange="drawHelpChart(1);">
                                 <option>Triangle</option>
                                 <option>Gauss</option>
-                                <option>Median</option>
+                                <option>S</option>
+                                <option>StartPaint</option>
                             </select>
                         </div>
+                        <div id="selectedFunctionChart1" style="height: 100px; width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" class="cb"> Uwzględnij
+                        </label>
+                        <input class="input tp" value="1420" type="number" placeholder="Temp. początkowa [°C]">
+                        <input class="input" value="1460" type="number" placeholder="Temp. końcowa [°C]">
+                        <input class="input" value="20" type="number" placeholder="Ciepło przemiany [J/g]">
+                        <div class="select is-fullwidth is-info">
+                            <select onchange="drawHelpChart(2);">
+                                <option>Triangle</option>
+                                <option>Gauss</option>
+                                <option>S</option>
+                            		<option>StartPaint</option>
+                            </select>
+                        </div>
+                        <div id="selectedFunctionChart2" style="height: 100px; width: 100%;"></div>
                     </div>
                 </div>
                 <div class="field is-horizontal">
@@ -102,14 +123,16 @@
                         </label>
                         <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
                         <input class="input" type="number" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J/g]">
                         <div class="select is-fullwidth is-info">
-                            <select>
+                            <select onchange="drawHelpChart(3);">
                                 <option>Triangle</option>
                                 <option>Gauss</option>
-                                <option>Median</option>
+                                <option>S</option>
+                                <option>StartPaint</option>
                             </select>
                         </div>
+                        <div id="selectedFunctionChart3" style="height: 100px; width: 100%;"></div>
                     </div>
                 </div>
                 <div class="field is-horizontal">
@@ -119,31 +142,16 @@
                         </label>
                         <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
                         <input class="input" type="number" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
+                        <input class="input" type="number" placeholder="Ciepło przemiany [J/g]">
                         <div class="select is-fullwidth is-info">
-                            <select>
+                            <select onchange="drawHelpChart(4);">
                                 <option>Triangle</option>
                                 <option>Gauss</option>
-                                <option>Median</option>
+                                <option>S</option>
+                                <option>StartPaint</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox" class="cb"> Uwzględnij
-                        </label>
-                        <input class="input tp" type="number" placeholder="Temp. początkowa [°C]">
-                        <input class="input" type="number" placeholder="Temp. końcowa [°C]">
-                        <input class="input" type="number" placeholder="Ciepło przemiany [J]">
-                        <div class="select is-fullwidth is-info">
-                            <select>
-                                <option>Triangle</option>
-                                <option>Gauss</option>
-                                <option>Median</option>
-                            </select>
-                        </div>
+                        <div id="selectedFunctionChart4" style="height: 100px; width: 100%;"></div>
                     </div>
                 </div>
             </div>
@@ -160,7 +168,7 @@
                 <div class="field">
                     <div class="control">
                         <button class="button is-primary is-medium is-rounded is-outlined"
-				onclick="validate();">
+																onclick="validate();">
                             <span class="file-icon">
                                 <i class="fas fa-chevron-circle-right"></i>
                             </span>Oblicz
@@ -168,6 +176,33 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="field is-horizontal">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary is-medium is-rounded is-outlined"
+																onclick="generateOuputFile();">
+                            <span class="file-icon">
+                                <i class="fas fa-chevron-circle-right"></i>
+                            </span>Zapisz do pliku
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field is-horizontal">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary is-medium is-rounded is-outlined"
+																	onclick="clearChartData();">
+                            <span class="file-icon">
+                                <i class="fas fa-chevron-circle-right"></i>
+                            </span>Restart wykresu
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
         </div>
 <!--
         <div id="bulma_modal" class="modal">
@@ -196,6 +231,11 @@
                 <h1 class="title">Wyniki</h1>
 
 				<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+   <br>
+
+				<div id="chartContainerCp" style="height: 370px; width: 100%;"></div>
+
 <!--
                 <figure class="image">
                     <div id="wykres">
@@ -204,43 +244,7 @@
                     </div>
                 </figure>
 -->
-                <br>
-
-                <table class="table is-hoverable">
-                    <thead>
-                        <tr>
-                            <td>
-                                <span class="icon">
-                                    <i class="fas fa-thermometer-empty"></i>
-                                </span>
-                                </i>Temperatura [°C]</td>
-                            <td>
-                                <span class="icon">
-                                    <i class="fas fa-hospital-symbol"></i>
-                                </span>Entalpia [kJ/mol]</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>10</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-
+             
             </div>
         </section>
 

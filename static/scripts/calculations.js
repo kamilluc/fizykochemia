@@ -1,8 +1,4 @@
 
-function provideData()
-{
-	return 'NAME Specific Heat\nXLABEL X-axis\nYLABEL Y-axis\nSCALE 1.000000 1.000000\nOFFSET 0.000000 0.000000\n56.000000 0.448640\n96.000000 0.488480\n136.000000 0.505580';
-}
 
 function loadHeat(data)
 {
@@ -10,25 +6,14 @@ function loadHeat(data)
 	var dataArray = data.split('\n');
 	var result = [];
 	
-	var t = [];
-	var cp = [];
 	for(var i=5; i<dataArray.length-1; i++)
 	{
-		t.push(parseFloat(dataArray[i].split(' ')[0]));
-		cp.push(parseFloat(dataArray[i].split(' ')[1]));
-	}
-	
-	// interpolacja cp co jeden stopien C
-	var polynomialDeg = 93;
-	var functionParams = numpy.polyfit(t, cp, polynomialDeg); 	
-
-	for(var i= parseInt(t[0]); i< parseInt(t[t.length-1]); i++)
-	{
 		var temp = {};
-		temp.t = i;
-		temp.cp = calcFunctionValue(functionParams, polynomialDeg, i);
+		temp.t = parseFloat(dataArray[i].split(' ')[0]);
+		temp.cp = parseFloat(dataArray[i].split(' ')[1]);
 		result.push(temp);
 	}
+	
 
 	return result;
 
@@ -61,6 +46,10 @@ function sortBy_t(a, b)
 
 // getInputSettings
 
+function lineInterploation(x0,y0,x1,y1,x){
+	return y0+(y1-y0)/(x1-x0)*(x-x0);
+}
+
 function applyPhaseTransitions(heatArray, phaseTransitions)
 {
 	var containsT_start, containsT_stop;
@@ -89,12 +78,25 @@ function applyPhaseTransitions(heatArray, phaseTransitions)
 			{
 				var objToPush = {};
 				objToPush.t=phaseTransitions[i].t_start;
-				objToPush.cp =(heatArray[start_index].cp + heatArray[start_index+1].cp)/2;
+				objToPush.cp = lineInterploation(	heatArray[start_index].t, 
+																					heatArray[start_index].cp,
+																					heatArray[start_index+1].t,
+																					heatArray[start_index+1].cp,
+																					phaseTransitions[i].t_start);
 				heatArray.push(objToPush);				
 			}
-			if(!containsT_stop)
-				heatArray.push({t: phaseTransitions[i].t_stop, 
-								cp: (heatArray[stop_index].cp + heatArray[stop_index+1].cp)/2});			
+			if(!containsT_stop){
+				var objToPush = {};
+				objToPush.t=phaseTransitions[i].t_start;
+			
+				objToPush.cp = lineInterploation(	heatArray[stop_index].t, 
+																					heatArray[stop_index].cp,
+																					heatArray[stop_index+1].t,
+																					heatArray[stop_index+1].cp,
+																					phaseTransitions[i].t_stop);
+				heatArray.push(objToPush);
+			}
+						
 			if(!containsT_start || !containsT_stop)
 			{
 				heatArray.sort(sortBy_t);
@@ -103,11 +105,50 @@ function applyPhaseTransitions(heatArray, phaseTransitions)
 	}
 }
 
+function generateMorePoints(heatArray, precision){
+	heatArray.sort(sortBy_t);
+	var dataLength = heatArray.length;
+	
+	for(var k=0;k<dataLength-1;k++){
+		var startTemperature = heatArray[k].t; 
+		var endTemperature = heatArray[k+1].t; 
+	
+		for(var p =startTemperature+precision; p<endTemperature;p+=precision){
+			var objToPush = {};
+			objToPush.t=p;
+		
+			objToPush.cp = lineInterploation(	heatArray[k].t, 
+																				heatArray[k].cp,
+																				heatArray[k+1].t,
+																				heatArray[k+1].cp,
+																				p);
+			heatArray.push(objToPush);
+		}
+	}
+	
+
+	heatArray.sort(sortBy_t);
+}
+
+
 
 function triangleFunction(x)
 {
 	return -x+10;
 }
+
+function gaussFunction(x)
+{
+	return Math.exp(-(x*x));
+}
+
+
+function sFunction(x)
+{
+	return 1/(1+ Math.abs(((x-0.5)/-3)) ^(3));
+}
+
+
 
 function integration(f, a, b)
 {
@@ -127,6 +168,8 @@ function addPhaseTransitionEnthalpyToHeatAray(heatArray, phaseTransitionConfig)
 {
 	var calculateFunction = null;
 	var a, b;
+	var isStartPoint = false;
+	
 	switch(phaseTransitionConfig.function)
 	{
 	case 'Triangle':
@@ -134,11 +177,36 @@ function addPhaseTransitionEnthalpyToHeatAray(heatArray, phaseTransitionConfig)
 		a = 0;
 		b = 10;
 		break;
+	case 'Gauss':
+		calculateFunction = gaussFunction;
+		a = -2;
+		b = 2;
+		break;
+	case 'S':
+		calculateFunction = sFunction;
+		a = 0;
+		b = 6;
+		break;
+	case 'StartPaint':
+		isStartPoint = true;
+		break;
 	default:
 		calculateFunction = triangleFunction;
 		a = 0;
 		b = 10;
 	}
+
+	if(isStartPoint){
+		for(var i=0; i<heatArray.length; i++){
+		
+			if(heatArray[i].t == phaseTransitionConfig.t_start )
+				heatArray[i].h = phaseTransitionConfig.q;
+			else if(typeof(heatArray[i].h) == 'undefined')
+				heatArray[i].h = 0;
+		}
+		return;
+	}
+	
 
 	var ref_diff = b - a;
 	var act_diff = phaseTransitionConfig.t_stop - phaseTransitionConfig.t_start;
@@ -168,15 +236,14 @@ function addPhaseTransitionEnthalpyToHeatAray(heatArray, phaseTransitionConfig)
 	}
 }	
 
-// TODO ------------------------------------------
+
 function calculateEnthalpy(heatArray)
 {
 	var h0 = heatArray[0].h + (heatArray[0].t * heatArray[0].cp);
 	heatArray[0].h = h0;
 	for(var i=1; i< heatArray.length; i++)
 	{
-		//TODO srednia z cp
-		var hi = h0 + (heatArray[i].cp * (heatArray[i-1].t + heatArray[i].t)/2);
+		var hi = h0 + ((heatArray[i-1].cp + heatArray[i].cp)/2 * (heatArray[i].t - heatArray[i-1].t));
 		heatArray[i].h += hi;
 		h0 = heatArray[i].h;
 	}
@@ -192,6 +259,8 @@ function calculateEvent()
 	var inputHeatData = getInputData();
 	
 	var heatArray = loadHeat(inputHeatData);
+	
+	generateMorePoints(heatArray,1);
 	applyPhaseTransitions(heatArray, phaseTransitions);
 
 	for(var i=0; i< phaseTransitions.length; i++)
@@ -207,4 +276,6 @@ function calculateEvent()
 	return heatArray;
 
 }
+
+
 
