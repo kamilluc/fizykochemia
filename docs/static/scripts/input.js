@@ -92,7 +92,7 @@ function phases() {
     let cb1 = true;
     let cb2 = cb[0].checked;
     let cb3 = cb[1].checked;
-    let cb4 = cb[1].checked;
+    let cb4 = cb[2].checked;
 
     // let cb=document.querySelectorAll(".cb");
     let methods = document.querySelectorAll("select");
