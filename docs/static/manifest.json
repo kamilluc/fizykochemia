@@ -1,0 +1,22 @@
+{
+    "dir": "ltr",
+    "lang": "pl",
+    "name": "Fizykochemia",
+    "scope": "https://kamilluc.github.io/fizykochemia/",
+    "display": "standalone",
+    "start_url": "https://kamilluc.github.io/fizykochemia/",
+    "short_name": "Fizykochemia",
+    "theme_color": "#317EFB",
+    "description": "",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "https://raw.githubusercontent.com/kamilluc/fizykochemia/master/static/img/logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
